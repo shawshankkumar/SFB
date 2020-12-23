@@ -1,0 +1,194 @@
+@start
+  *say
+    Welcome to my first Alexa skill! It is a very pleasant day. Let's make this day productive as well.
+    *then
+    -> question
+     
+ //asks the user to either pick a stream or end the process. 
+ 
+@ question 
+     *say
+       Would you like to decide what you want to study after 10th standard? 
+     *then
+    hear yes, yeah, hell yeah, yup, let's do it, ok, done, ok do it,sure, let's, go ahead, let's pick one{
+    // to choose a stream
+    -> pick stream
+    }
+    hear no, nope, not today, let's not, don't, please don't, maybe later{
+    -> do not pick stream 
+     }
+     
+     
+@pick stream
+    *say
+    Great! Let's plan your future today. First, tell me, was your score higher than Ninety percent in 10th standard examinations?
+    *then
+    hear yes, yeah, hell yeah, it was, it is, i think so, i guess, yup, yo, let's say it is, let's assume it is{
+    -> good score
+    }
+    hear no, nope, no it was not, no it is not, sadly no{
+    -> bad score
+    }
+    
+@good score
+*say 
+Congratulations on scoring so well in you exams! Now, let us decide what you want to study next. 
+Are you interested in science, arts or Commerce? 
+*then
+
+hear Science{
+-> good score science
+}
+
+hear commerce{
+-> good score commerce
+}
+
+hear arts, humanities{
+-> good score arts
+}
+
+
+@good score science
+*say
+Good job picking Science. Your parents and society will approve of you picking science. Now tell me, do you want to be a doctor or an engineer?
+*then
+
+hear engineer{
+-> engineer
+}
+
+hear doctor{
+-> doctor
+}
+
+
+@engineer
+*say
+Brilliant Choice! You'll be a great engineer some day. Be it making cars, buildings or alexa skills. All the best for your JEE exams!
+*then 
+-> end
+
+
+@doctor
+*say
+Excellent choice! You will save thousands of lives, it is a noble profession. 
+*then 
+-> end
+
+
+@good score commerce
+*say 
+That is a good choice! World is in need of smart people who can run a succesful buisness.
+I wish you well, Study hard!
+*then 
+->end
+
+
+@good score arts
+*say
+Congratulations on scoring good marks! Are you sure your parents will allow you to study Arts? the society may judge you. 
+*then
+hear yes, yeah, yes i am sure, i am sure, sure, done{
+-> arts sure
+}
+hear no, nope, not sure, i am scared, i want to but i am not sure{
+->good score 
+}
+
+
+@arts sure
+*say
+Good! Never be afraid of society's judgement. I wish you well and may the force be with you. 
+*then 
+->end
+
+
+@bad score
+*say
+Do not worry buddy, marks are just one of many aspects of life. Let us forget about the past and decide what the future will be. 
+*then 
+-> pick one  
+
+
+@pick one
+*say 
+Pick one among Science, commerce and Arts.
+*then
+hear science{
+-> bad score science
+}
+hear arts{
+-> bad score arts
+}
+hear commerce{
+-> bad score commerce
+}
+
+
+@bad score science
+*say
+Good choice. But are you sure you want to study science, getting science stream in schools with a low score may be difficult?
+*then
+hear yes, yes i am sure, i want to{
+-> low score science study
+}
+hear no, nope, no i do not want to{
+-> low score science not study
+}
+
+
+@low score science study
+*say
+Good! Scores do not reflect a student's interest in a subject. 
+*then
+->good score science 
+
+
+@low score science not study
+*say
+Study whatever you want, not what others want you to. Let's pick a stream again.
+*then 
+-> bad score  
+
+
+@bad score arts
+*say
+Great choice! There are so many writers, lawyers, I.A.S officers and poets who scored low in 10th but excel in their respective fields now. 
+*then 
+-> end
+
+
+@bad score commerce
+*say 
+Good choice. Running a successful buisness has nothing to do with how much you scored in a test. All the best!
+*then 
+-> end  
+
+
+@do not pick stream
+*say
+Are you sure you don't want to pick a stream and decide what you want to study in the future?
+*then
+//No and no not today are wrong by the rules of English grammar but the users may say these
+hear Yes, yes i am sure, i am sure, yeah, yeah i am sure, not today, no not today{
+-> end this
+}
+hear No, I want to do it, i want to, i want, i am intereseted, let's do it{
+-> question
+}
+
+
+@end this
+*say 
+Fine. Let's procrastinate together.
+*then 
+-> end
+
+
+@end 
+*say 
+Have a great day! 
+*then 
+>> end
+
